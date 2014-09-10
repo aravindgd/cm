@@ -10,7 +10,17 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem "haml-rails"
-gem "faker", require: false
 gem 'carrierwave'
 gem 'devise'
 gem 'simple_form'
+gem 'rails_admin'
+gem "select2-rails"
+gem "faker", require: false
+gem 'bootstrap-sass',  '~> 3.2.0'
+gem 'autoprefixer-rails'
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'jazz_hands',  github: 'nixme/jazz_hands',  branch: 'bring-your-own-debugger'
+  gem 'quiet_assets'
+end

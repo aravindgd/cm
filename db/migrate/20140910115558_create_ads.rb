@@ -4,7 +4,7 @@ class CreateAds < ActiveRecord::Migration
       t.string :name
       t.text :content
       t.string :image
-      t.user :belongs_to
+      t.belongs_to :users
 
       t.timestamps
     end

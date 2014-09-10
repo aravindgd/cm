@@ -1,25 +1,26 @@
-%h1 Listing ads
+.container
+  %h1 Listing ads
 
-%table
-  %tr
-    %th Name
-    %th Content
-    %th Image
-    %th Belongs to
-    %th
-    %th
-    %th
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Name
+        %th Content
+        %th Image
+        %th Category
+        %th
+        %th
+        %th
+    %tbody
+      - @ads.each do |ad|
+        %tr
+          %td= ad.name
+          %td= ad.content
+          %td= image_tag(ad.image_url) if ad.image?
+          %td= link_to 'Show', user_ad_path(current_user, ad)
+          %td= link_to 'Edit', edit_user_ad_path(current_user, ad)
+        -# %td= link_to 'Destroy', user_ad_path(current_user), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  - @ads.each do |ad|
-    %tr
-      %td= ad.name
-      %td= ad.content
-      %td= ad.image
-      %td= ad.belongs_to
-      %td= link_to 'Show', ad
-      %td= link_to 'Edit', edit_ad_path(ad)
-      %td= link_to 'Destroy', ad, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br
 
-%br
-
-= link_to 'New Ad', new_ad_path
+  = link_to 'New Ad', new_user_ad_path(current_user)

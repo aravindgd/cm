@@ -1,11 +1,11 @@
-= simple_form_for(@ad) do |f|
+= simple_form_for([current_user, @ad]) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
     = f.input :content
-    = f.input :image
-    = f.input :belongs_to
+    = f.file_field :image
+    = f.association :category
 
   .form-actions
     = f.button :submit
