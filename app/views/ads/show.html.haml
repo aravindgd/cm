@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ad.name
+%p
+  %b Content:
+  = @ad.content
+%p
+  %b Image:
+  = @ad.image
+%p
+  %b Belongs to:
+  = @ad.belongs_to
+
+= link_to 'Edit', edit_ad_path(@ad)
+\|
+= link_to 'Back', ads_path

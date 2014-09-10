@@ -13,3 +13,4 @@ gem "haml-rails"
 gem "faker", require: false
 gem 'carrierwave'
 gem 'devise'
+gem 'simple_form'
