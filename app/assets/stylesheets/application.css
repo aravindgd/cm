@@ -15,5 +15,6 @@
  *= require select2-bootstrap
  *= require owl.carousel
  *= require owl.theme
+ *= require ads
  *= require_self
  */

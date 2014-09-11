@@ -1,7 +1,12 @@
-%h1 Editing ad
+.container
+  .col-md-12
+    %h1 Editing Ad
+    %hr
 
-= render 'form'
-
-= link_to 'Show', user_ad_path(current_user, @ad)
-\|
-= link_to 'Back', user_ads_path(current_user)
+    = render 'form'
+  
+  .col-md-12
+    #other_form_buttons
+      = link_to 'Show', ad_path(@ad), class: "btn btn-success"
+      \|
+      = link_to 'Back', ads_path, class: "btn btn-success"

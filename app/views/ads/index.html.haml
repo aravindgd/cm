@@ -1,33 +1,38 @@
 .container
   %h1 Listing ads
 
-  - @ads.each do |ad|
-    %legend
-      = ad.category.name
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Name
-          %th Content
-          %th Created At
-          %th Image
-          %th
-          %th
-          %th
-          %th
-      %tbody
-        %tr
-          %td= ad.name
-          %td= ad.content
-          %td= ad.created_at
-          %td= link_to 'Show', user_ad_path(current_user, ad)
-          %td= link_to 'Edit', edit_user_ad_path(current_user, ad)
-          %td= link_to 'Destroy', user_ads_path(current_user, ad), :method => :delete, :data => { :confirm => 'Are you sure?' }
-    - if ad.ad_image_attachments
-      .image-slider
-        - ad.ad_image_attachments.each do |ad_image|
-          = image_tag(ad_image.image_url(:thumb))
+  .col-md-12
+    .col-md-10
+      - @ads.each do |ad|
+        %h1
+          = ad.category.name
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Name
+              %th Content
+              %th Created At
+              %th
+              %th
+              %th
+              %th
+          %tbody
+            %tr
+              %td= ad.name
+              %td= ad.content
+              %td= ad.created_at
+              %td= link_to 'Show', ad_path(ad), class: "btn btn-success"
+              %td= link_to 'Edit', edit_ad_path(ad), class: "btn btn-warning"
+              %td= link_to 'Destroy', ad, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
+        - if ad.ad_image_attachments
+          %legend 
+            Image
+          .image-slider
+            - ad.ad_image_attachments.each do |ad_image|
+              = image_tag(ad_image.image_url(:thumb))
+        %hr
+    .col-md-2
 
   %br
 
-  = link_to 'New Ad', new_user_ad_path(current_user)
+  = link_to 'New Ad', new_ad_path, class: "btn btn-success"

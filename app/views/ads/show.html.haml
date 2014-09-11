@@ -20,6 +20,6 @@
 
   %hr
 
-  = link_to 'Edit', edit_user_ad_path(current_user, @ad), class: "btn btn-xs"
+  = link_to 'Edit', edit_ad_path(@ad), class: "btn btn-warning"
   \|
-  = link_to 'Back', user_ads_path(current_user), class: "btn btn-xs"
+  = link_to 'Back', ads_path, class: "btn btn-success"

@@ -12,12 +12,14 @@
       - if user_signed_in?
         %ul.nav.navbar-nav
           %li
-            = link_to "Ads", user_ads_path(current_user)
+            = link_to "Ads", ads_path
           - if current_user.is_admin?
             %li
               = link_to "Admin", "/admin"
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
+          %li
+            = link_to "#{current_user.email}", edit_user_path(current_user) 
           %li
             = link_to "Sign out", destroy_user_session_path, method: "DELETE"
         - else
