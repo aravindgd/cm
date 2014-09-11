@@ -6,9 +6,9 @@ class AdsController < ApplicationController
   # GET /ads.json
   def index
 	if params[:category_id]
-	  @ads = Ad.all
-	else
 	  @ads = Ad.where(category_id: params[:category_id])
+	else
+	  @ads = Ad.all
 	end
   end
 

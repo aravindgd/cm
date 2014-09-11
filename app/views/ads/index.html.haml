@@ -32,6 +32,11 @@
               = image_tag(ad_image.image_url(:thumb))
         %hr
     .col-md-2
+      = link_to "All Categories", ads_path
+      %br
+      - Category.all.each do |category|
+        = link_to "#{category.name}", ads_path(category_id: category.id)
+        %br
 
   %br
 
