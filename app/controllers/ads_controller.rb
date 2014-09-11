@@ -1,11 +1,12 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :check_if_owner, only: [:show,  :edit,  :update,  :destroy]
 
   # GET /ads
   # GET /ads.json
   def index
-    @ads = Ad.all
+    @ads = Ad.where(user: current_user)
   end
 
   # GET /ads/1
@@ -26,7 +27,7 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(ad_params)
-
+	@ad.user = current_user
     respond_to do |format|
       if @ad.save
         format.html { redirect_to user_ad_path(current_user, @ad), notice: 'Ad was successfully created.' }
@@ -68,8 +69,14 @@ class AdsController < ApplicationController
       @ad = Ad.find(params[:id])
     end
 
+	def check_if_owner
+	  unless @ad.user == current_user
+		redirect_to user_ads_path(current_user)
+	  end
+	end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def ad_params
-      params.require(:ad).permit(:name, :content, :image, :belongs_to)
+      params.require(:ad).permit(:name, :content, :image, :category_id)
     end
 end

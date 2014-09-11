@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem "haml-rails"
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'devise'
 gem 'simple_form'
 gem 'rails_admin'

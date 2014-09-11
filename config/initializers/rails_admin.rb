@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
 
   # == Devise ==
   config.authenticate_with do
-	warden.authenticate! scope: :is_admin
+	# warden.authenticate! scope: :is_admin?
   end
   config.current_user_method(&:current_user)
 

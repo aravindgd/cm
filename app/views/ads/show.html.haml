@@ -8,11 +8,11 @@
   = @ad.content
 %p
   %b Image:
-  = @ad.image
+  = image_tag @ad.image_url(:thumb) if @ad.image
 %p
-  %b Belongs to:
-  = @ad.belongs_to
+  %b Category:
+  = @ad.category.name
 
-= link_to 'Edit', edit_ad_path(@ad)
+= link_to 'Edit', edit_user_ad_path(current_user, @ad)
 \|
-= link_to 'Back', ads_path
+= link_to 'Back', user_ads_path(current_user)

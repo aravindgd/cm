@@ -1,11 +1,17 @@
-= simple_form_for([current_user, @ad]) do |f|
+= simple_form_for([current_user, @ad], class: "form-horizontal") do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :content
-    = f.file_field :image
-    = f.association :category
+    .form-group.col-md-12
+      = f.input :name
+    .form-group.col-md-12
+      = f.input :content
+    .form-group.col-md-12
+      = f.file_field :image
+      - if f.object.persisted? and f.object.image
+        = image_tag @ad.image_url(:thumb) 
+    .form-group.col-md-12
+      = f.association :category, input_html: {class: "select2"}
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-success"

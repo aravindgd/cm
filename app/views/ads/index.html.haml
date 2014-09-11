@@ -11,15 +11,17 @@
         %th
         %th
         %th
+        %th
     %tbody
       - @ads.each do |ad|
         %tr
           %td= ad.name
           %td= ad.content
-          %td= image_tag(ad.image_url) if ad.image?
+          %td= image_tag(ad.image_url(:thumb)) if ad.image?
+          %td= ad.category.name
           %td= link_to 'Show', user_ad_path(current_user, ad)
           %td= link_to 'Edit', edit_user_ad_path(current_user, ad)
-        -# %td= link_to 'Destroy', user_ad_path(current_user), :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Destroy', user_ads_path(current_user, ad), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   %br
 

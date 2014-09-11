@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :ads
+  has_many :ads, inverse_of: :user
   validates :name, presence: true
   validates :email, presence: true
+  scope :is_admin, -> { where(is_admin: true) }
 end

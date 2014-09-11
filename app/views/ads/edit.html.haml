@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @ad
+= link_to 'Show', user_ad_path(current_user, @ad)
 \|
-= link_to 'Back', ads_path
+= link_to 'Back', user_ads_path(current_user)

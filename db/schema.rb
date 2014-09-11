@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140910175630) do
     t.string   "name"
     t.text     "content"
     t.string   "image"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
