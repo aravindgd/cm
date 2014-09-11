@@ -1,0 +1,5 @@
+.nested-fields
+  = f.file_field :image
+  - if f.object.image.present?
+    = image_tag(f.object.image_url(:thumb))
+  = link_to_remove_association "remove image", f

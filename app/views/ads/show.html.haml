@@ -1,18 +1,25 @@
-%p#notice= notice
+.container
+  %p#notice= notice
 
-%p
-  %b Name:
-  = @ad.name
-%p
-  %b Content:
-  = @ad.content
-%p
-  %b Image:
-  = image_tag @ad.image_url(:thumb) if @ad.image
-%p
-  %b Category:
-  = @ad.category.name
+  %p
+    %b Name:
+    = @ad.name
+  %p
+    %b Content:
+    = @ad.content
+  %p
+    %b Category:
+    = @ad.category.name
 
-= link_to 'Edit', edit_user_ad_path(current_user, @ad)
-\|
-= link_to 'Back', user_ads_path(current_user)
+  %p
+    %b Image:
+    - if @ad.ad_image_attachments
+      .image-slider
+        - @ad.ad_image_attachments.each do |ad_image|
+          = image_tag(ad_image.image_url(:thumb))
+
+  %hr
+
+  = link_to 'Edit', edit_user_ad_path(current_user, @ad), class: "btn btn-xs"
+  \|
+  = link_to 'Back', user_ads_path(current_user), class: "btn btn-xs"

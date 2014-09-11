@@ -13,5 +13,7 @@
  *= require bootstrap_include
  *= require select2
  *= require select2-bootstrap
+ *= require owl.carousel
+ *= require owl.theme
  *= require_self
  */

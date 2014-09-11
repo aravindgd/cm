@@ -16,3 +16,5 @@
 //= require bootstrap-sprockets
 //= require select2
 //= require global
+//= require owl.carousel
+//= require cocoon

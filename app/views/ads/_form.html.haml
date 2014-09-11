@@ -7,9 +7,12 @@
     .form-group.col-md-12
       = f.input :content
     .form-group.col-md-12
-      = f.file_field :image
-      - if f.object.persisted? and f.object.image
-        = image_tag @ad.image_url(:thumb) 
+      %h3 Image Attachments
+      #tasks
+        = f.simple_fields_for :ad_image_attachments do |ad_image_attachment|
+          = render 'ad_image_attachment_fields', :f => ad_image_attachment
+        .links
+          = link_to_add_association 'Add image attachment', f, :ad_image_attachments
     .form-group.col-md-12
       = f.association :category, input_html: {class: "select2"}
 

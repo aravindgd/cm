@@ -2,13 +2,14 @@
   %h1 Listing ads
 
   - @ads.each do |ad|
-    %h1 
+    %legend
       = ad.category.name
     %table.table.table-striped
       %thead
         %tr
           %th Name
           %th Content
+          %th Created At
           %th Image
           %th
           %th
@@ -18,10 +19,14 @@
         %tr
           %td= ad.name
           %td= ad.content
-          %td= image_tag(ad.image_url(:thumb)) if ad.image?
+          %td= ad.created_at
           %td= link_to 'Show', user_ad_path(current_user, ad)
           %td= link_to 'Edit', edit_user_ad_path(current_user, ad)
           %td= link_to 'Destroy', user_ads_path(current_user, ad), :method => :delete, :data => { :confirm => 'Are you sure?' }
+    - if ad.ad_image_attachments
+      .image-slider
+        - ad.ad_image_attachments.each do |ad_image|
+          = image_tag(ad_image.image_url(:thumb))
 
   %br
 

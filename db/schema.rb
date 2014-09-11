@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910175630) do
+ActiveRecord::Schema.define(version: 20140911095950) do
+
+  create_table "ad_image_attachments", force: true do |t|
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "ad_id"
+  end
+
+  add_index "ad_image_attachments", ["ad_id"], name: "index_ad_image_attachments_on_ad_id"
 
   create_table "ads", force: true do |t|
     t.string   "name"
     t.text     "content"
-    t.string   "image"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -19,6 +19,8 @@ gem "select2-rails"
 gem "faker", require: false
 gem 'bootstrap-sass',  '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem "cocoon"
+gem 'owlcarousel-rails'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
