@@ -4,6 +4,11 @@ RailsAdmin.config do |config|
 
   # == Devise ==
   config.authenticate_with do
+	if current_user  and current_user.is_admin?
+	  true
+	else
+	  redirect_to root_path, notice: "Not authorized to see this page"
+	end
 	# warden.authenticate! scope: :is_admin?
   end
   config.current_user_method(&:current_user)
